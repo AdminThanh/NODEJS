@@ -1,0 +1,20 @@
+<h1>Hello</h1>
+
+<script>
+    function kiemtra(res) {
+        if (!res.ok) { throw new Error("Lỗi = " + res.status); }
+        console.log(res);   //xem cấu trúc của response
+        return res.json();  //parse body của response thành json
+    }
+    function xulydulieu(data) {
+        //xử lý data tùy nhu cầu
+        console.log(data);
+    }
+    function xulyloi(e) { console.log("Lỗi: ", e); }
+
+    window.fetch("http://localhost:3000/product")
+        .then(kiemtra)
+        .then(xulydulieu)
+        .catch(xulyloi);
+
+</script>

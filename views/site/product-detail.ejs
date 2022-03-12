@@ -1,0 +1,310 @@
+<%-include("header")%>
+
+
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
+    <div class="offset__wrapper">
+        <!-- Start Search Popap -->
+        <div class="search__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="search__inner">
+                            <form action="/search" method="get">
+                                <input name="key" placeholder="Tìm kiếm..." type="text">
+                                <button type="submit"></button>
+                            </form>
+                            <div class="search__close__btn">
+                                <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Search Popap -->
+        <!-- Start Cart Panel -->
+        <div class="shopping__cart">
+            <div class="shopping__cart__inner">
+                <div class="offsetmenu__close__btn">
+                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                </div>
+                <div class="shp__cart__wrap">
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product-2/sm-smg/1.jpg" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$105.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                    <div class="shp__single__product">
+                        <div class="shp__pro__thumb">
+                            <a href="#">
+                                <img src="images/product-2/sm-smg/2.jpg" alt="product images">
+                            </a>
+                        </div>
+                        <div class="shp__pro__details">
+                            <h2><a href="product-details.html">Brone Candle</a></h2>
+                            <span class="quantity">QTY: 1</span>
+                            <span class="shp__price">$25.00</span>
+                        </div>
+                        <div class="remove__btn">
+                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="shoping__total">
+                    <li class="subtotal">Subtotal:</li>
+                    <li class="total__price">$130.00</li>
+                </ul>
+                <ul class="shopping__btn">
+                    <li><a href="cart.html">View Cart</a></li>
+                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Cart Panel -->
+    </div>
+    <!-- End Offset Wrapper -->
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area"
+        style="background: rgba(0, 0, 0, 0) url(/site/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump__inner">
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="index.html">Trang chủ</a>
+                                <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                                <a class="breadcrumb-item" href="product-grid.html">Chi tiết sản phẩm</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- Start Product Details Area -->
+    <section class="htc__product__details bg__white ptb--100">
+        <!-- Start Product Details Top -->
+        <div class="htc__product__details__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                        <div class="htc__product__details__tab__content">
+                            <!-- Start Product Big Images -->
+                            <div class="product__big__images">
+                                <div class="portfolio-full-image tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
+                                        <img src="" alt="full-image" id="productThumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Product Big Images -->
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
+                        <div class="ht__product__dtl">
+                            <h2 id="productName"></h2>
+                            <h6>Lượt xem: <span id="productView"></span></h6>
+                            <ul class="pro__prize">
+                                <li><span id="productPrice"></span> VNĐ</li>
+                            </ul>
+                            <p class="pro__info" id="productMota"></p>
+                            <div class="ht__pro__desc">
+                                <div class="sin__desc">
+                                    <button class="cursor-pointer" id="btn-mua">Mua ngay</button>
+                                </div>
+                                <div class="sin__desc align--left">
+                                    <p><span>Danh mục:</span></p>
+                                    <ul class="pro__cat__list">
+                                        <li>
+                                            <a href="" id="CateProduct"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="sin__desc product__share__link">
+                                    <p><span>Chia sẻ:</span></p>
+                                    <ul class="pro__share">
+                                        <li><a href="#" target="_blank"><i class="icon-social-twitter icons"></i></a>
+                                        </li>
+
+                                        <li><a href="#" target="_blank"><i class="icon-social-instagram icons"></i></a>
+                                        </li>
+
+                                        <li><a href="https://www.facebook.com/Furny/?ref=bookmarks" target="_blank"><i
+                                                    class="icon-social-facebook icons"></i></a></li>
+
+                                        <li><a href="#" target="_blank"><i class="icon-social-google icons"></i></a>
+                                        </li>
+
+                                        <li><a href="#" target="_blank"><i class="icon-social-linkedin icons"></i></a>
+                                        </li>
+
+                                        <li><a href="#" target="_blank"><i class="icon-social-pinterest icons"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Product Details Top -->
+    </section>
+    <!-- End Product Details Area -->
+    <!-- Start Product Description -->
+    <section class="htc__produc__decription bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Start List And Grid View -->
+                    <ul class="pro__details__tab" role="tablist">
+                        <li role="presentation" class="description active"><a href="#description" role="tab"
+                                data-toggle="tab">Mô tả</a></li>
+                        <li role="presentation" class="review"><a href="#review" role="tab" data-toggle="tab">Đánh
+                                giá</a>
+                        </li>
+                    </ul>
+                    <!-- End List And Grid View -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="ht__pro__details__content">
+                        <!-- Start Single Content -->
+                        <div role="tabpanel" id="description" class="pro__single__content tab-pane fade in active">
+                            <div class="pro__tab__content__inner">
+                                <h4 class="ht__pro__title">Mô tả sản phẩm</h4>
+                                <p id="moTa"></p>
+                            </div>
+                        </div>
+                        <!-- End Single Content -->
+                        <!-- Start Single Content -->
+                        <div role="tabpanel" id="review" class="pro__single__content tab-pane fade">
+                            <div class="pro__tab__content__inner">
+                                <h4 class="ht__pro__title">Đánh giá sản phẩm</h4>
+                                <p>Đánh giá</p>
+                            </div>
+                        </div>
+                        <!-- End Single Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Product Description -->
+    <!-- Start Product Area -->
+    <section class="htc__product__area--2 pb--100 product-details-res">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section__title--2 text-center">
+                        <h2 class="title__line">Sản phẩm liên quan</h2>
+                        <span id="productLienQuanID" hidden></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="product__wrap clearfix" id="productLienQuan">
+                    <!-- Start Single Product -->
+                    <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                        <div class="category">
+                            <div class="ht__cat__thumb">
+                                <a href="product-details.html">
+                                    <img src="http://html.tamphat.edu.vn/asbab-preview/asbab/images/product/6.jpg"
+                                        alt="product images">
+                                </a>
+                            </div>
+                            <div class="fr__hover__info">
+                                <ul class="product__action">
+                                    <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+
+                                    <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
+
+                                    <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="fr__product__inner">
+                                <h4><a href="product-details.html">GHẾ VĂN PHÒNG CHÂN XOAY LƯNG LƯỚI HOM1089-01</a></h4>
+                                <ul class="fr__pro__prize">
+                                    <li>2.000.000 VNĐ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Product -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Product Area -->
+    <!-- Start Banner Area -->
+    <div class="htc__brand__area bg__cat--4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="ht__brand__inner">
+                        <ul class="brand__list owl-carousel clearfix">
+                            <li><a href="#"><img src="/site/images/brand/1.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/2.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/3.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/4.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/5.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/5.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/1.png" alt="brand images"></a></li>
+                            <li><a href="#"><img src="/site/images/brand/2.png" alt="brand images"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Area -->
+    <!-- End Banner Area -->
+    <%-include("footer")%>
+
+
+        <!-- Sản phẩm bán chạy -->
+        <script>
+            function kiemtra(res) {
+                if (!res.ok) { throw new Error("Lỗi = " + res.status); }
+                // console.log(res);
+                return res.json();  //parse body của response thành json
+            }
+            function xulydulieu(data) {
+                console.log("data :" + data.product_name);
+                document.querySelector("#productName").innerHTML = data.product_name;
+                document.querySelector("#productView").innerHTML = data.view;
+                document.querySelector("#productPrice").innerHTML = String(data.price).replace(/(.)(?=(\d{3})+$)/g, '$1,');
+                document.querySelector("#productMota").innerHTML = data.description;
+                document.querySelector("#moTa").innerHTML = data.description;
+                document.querySelector("#productThumbnail").src = data.thumbnail;
+                document.querySelector("#CateProduct").innerHTML = data.category_name;
+                document.querySelector("#CateProduct").href = "../danhmuc/" + data.category_id;
+                document.querySelector("#productLienQuanID").innerHTML = data.category_id;
+            }
+            function xulyloi(e) { console.log("Lỗi: ", e); }
+
+            var id = location.href.split("/").pop()
+            console.log("id : " + id);
+
+            window.fetch(`http://localhost:3000/productAPI/list/${id}`)
+                .then(kiemtra)
+                .then(xulydulieu)
+                .catch(xulyloi);    
+        </script>
+
+       

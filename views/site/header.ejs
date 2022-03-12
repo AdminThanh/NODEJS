@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Meta Chair - Nodejs</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="/site/images/favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- All css files are included here. -->
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="/site/css/bootstrap.min.css">
+    <!-- Owl Carousel min css -->
+    <link rel="stylesheet" href="/site/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/site/css/owl.theme.default.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="/site/css/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="/site/css/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="/site/css/responsive.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="/site/css/custom.css">
+    <!-- Modernizr JS -->
+    <script src="/site/js/vendor/modernizr-3.5.0.min.js"></script>
+</head>
+
+<body>
+    <div class='mouse-cursor cursor-outer'></div>
+    <div class='mouse-cursor cursor-inner'></div>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="htc__header" class="htc__header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="/"><img src="/site/images/logo/4.png" alt="logo images"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li class="drop"><a href="/">Trang chủ</a></li>
+                                        <li class="drop"><a href="/danhsach">Danh mục</a>
+                                            <ul class="dropdown" id="categoryList">
+
+                                            </ul>
+                                        </li>
+                                        <li class="drop"><a href="">Tin tức</a></li>
+                                        <li class="drop"><a href="#">Giới thiệu</a></li>
+                                        <li><a href="#">Liên hệ</a></li>
+                                    </ul>
+                                </nav>
+
+                                <div class="mobile-menu clearfix visible-xs visible-sm">
+                                    <nav id="mobile_dropdown">
+                                        <ul>
+                                            <li><a href="/">Trang chủ</a></li>
+                                            <li><a href="">Tin tức</a></li>
+                                            <li><a href="#">Giới thiệu</a></li>
+                                            <li><a href="#">Liên hệ</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                                <div class="header__right">
+                                    <div class="header__search search search__open">
+                                        <a href="#"><i class="icon-magnifier icons"></i></a>
+                                    </div>
+                                    <div class="header__account">
+                                        <a href="/user/login"><i class="icon-user icons"></i></a>
+                                    </div>
+                                    <div class="htc__shopping__cart">
+                                        <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
+                                        <a href="#"><span class="htc__qua" id="numCartTop">0</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-menu-area"></div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <script>
+            function kiemtra(res) {
+                if (!res.ok) { throw new Error("Lỗi = " + res.status); }
+                console.log(res);
+                return res.json();  //parse body của response thành json
+            }
+            function xulydulieu(data) {
+                console.log(data);
+                for (data of data) {
+                    list = `<li><a href="/danhmuc/${data.category_id}">${data.category_name}</a></li>`;
+                    document.querySelector("#categoryList").innerHTML += list;
+                }
+            }
+            function xulyloi(e) { console.log("Lỗi: ", e); }
+
+            window.fetch("http://localhost:3000/categoryAPI/list")
+                .then(kiemtra)
+                .then(xulydulieu)
+                .catch(xulyloi);
+
+        </script>
+        <script>
+            numCart()
+            function numCart() {
+                var numCart = document.querySelector("#numCartTop");
+                console.log("numCart" + numCart)
+                console.log("cart " + cart)
+                var cart = JSON.parse(localStorage.getItem("cart"));
+                var quantity = 0;
+                if (cart) {
+                    for (cat of cart) {
+                        quantity += cat.quantity;
+                    }
+                    numCart.innerHTML = quantity;
+                }
+            }
+
+           
+
+        </script>

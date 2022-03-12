@@ -1,0 +1,228 @@
+<%-include("header")%>
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
+    <div class="offset__wrapper">
+        <!-- Start Search Popap -->
+        <div class="search__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="search__inner">
+                            <form action="product-grid.html" method="get">
+                                <input name="search" placeholder="Tìm kiếm sản phẩm... " type="text">
+                                <button type="submit"></button>
+                            </form>
+                            <div class="search__close__btn">
+                                <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Search Popap -->
+        <!-- Start Cart Panel -->
+        <div class="shopping__cart">
+            <div class="shopping__cart__inner">
+                <div class="offsetmenu__close__btn">
+                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+                </div>
+                <div class="shp__cart__wrap" id="list_cart">
+                    <!-- LIST CART -->
+                </div>
+                <ul class="shoping__total">
+                    <li class="subtotal">Tổng giá:</li>
+                    <li class="total__price" id="total__price">100000</li>
+                </ul>
+                <ul class="shopping__btn">
+                    <li><a href="cart.html">Xem giỏ hàng</a></li>
+                    <li class="shp__checkout"><a href="checkout.html">Thanh toán</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- End Cart Panel -->
+    </div>
+    <!-- End Offset Wrapper -->
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area"
+        style="background: rgba(0, 0, 0, 0) url(/site/images/bg/4.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump__inner">
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="index.html">Trang chủ</a>
+                                <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                                <span class="breadcrumb-item active">Đổi mật khẩu</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- cart-main-area start -->
+    <div class="checkout-wrap pt--40 pb--100">
+        <div class="container">
+            <div class="row mid">
+                <div class="col-md-8">
+                    <div class="checkout__inner">
+                        <div class="accordion-list">
+                            <div class="accordion">
+                                <div class="accordion__title">Đôi mật khẩu người dùng</div>
+                                <div class="accordion__body">
+                                    <div class="bilinfo">
+                                        <form action="" method="POST" id="changepass_form">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="single-input">
+                                                        <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                                                        <input type="text" hidden value="<%=un%>" name="username"
+                                                            placeholder="Mật khẩu">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="single-input">
+                                                        <input type="password" name="passwordNew" id="passwordNew"
+                                                            placeholder="Mật khẩu mới">
+                                                    </div>
+                                                </div>
+                                                <ul class="payment__btn col-md-12">
+                                                    <li class="active" type="submit" id="btnChangepass"><a>Đổi mật khẩu</a></li>
+                                                </ul>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cart-main-area end -->
+    <!-- Start Footer Area -->
+    <%-include("footer")%>
+
+        <script>
+
+            var btnChangepass = document.querySelector("#btnChangepass");
+            btnChangepass.addEventListener("click", function () {
+                var passwordNew = document.querySelector("input#passwordNew").value;
+                var password = document.querySelector("input#password").value;
+                if (passwordNew == "" || password == "") {
+                    swal("Thất bại!", "Vui lòng nhập mật khẩu!", "error");
+                } else {
+                    document.querySelector("#changepass_form").submit();
+                    // swal("Thành công!", "Đổi mật khẩu thành công!", "success");
+                }
+            })
+
+
+            function viewCartCheckout() {
+                var cart = JSON.parse(localStorage.getItem("cart"));
+                if (cart) cart.forEach((sp, index) => {
+                    document.querySelector("#cartListCheckout").innerHTML += `
+                <div class="single-item cartCheckout">
+                    <div class="single-item__thumb">
+                        <img src="${sp.image}" alt="ordered item">
+                    </div>
+                    <div class="single-item__content">
+                        <a href="product-details.html?id=${sp.id}">${sp.name}</a>
+                        <span class="priceCheckout">${formatVND(sp.price * sp.quantity)}</span>
+                    </div>
+                    <div class="single-item__remove">
+                        <a href="#"><i class="zmdi zmdi-delete"></i></a>
+                    </div>
+                </div>`;
+                });
+            }
+
+            viewCartCheckout();
+
+            function cartCheckout() {
+                var cartCheckout = document.getElementsByClassName('priceCheckout');
+                var tongCartCheckout = 0;
+                for (cartCheckout of cartCheckout) {
+                    {
+                        tongCartCheckout += parseInt(deleteNotNum(cartCheckout.innerHTML));
+                    }
+                }
+                document.getElementById('priceCheckout').innerHTML = formatVND(tongCartCheckout);
+                document.getElementById('priceCheckoutTam').innerHTML = formatVND(tongCartCheckout);
+            }
+            cartCheckout();
+
+            // Đặt hàng
+            function dathang() {
+                document.querySelector("#btnCheckout").onclick = function () {
+                    hoten = document.querySelector("#hoten").value.trim();
+                    phone = document.querySelector("#phone").value.trim();
+                    email = document.querySelector("#email").value.trim();
+                    diachi = document.querySelector("#diachi").value.trim();
+                    ghichu = document.querySelector("#ghichu").value.trim();
+
+
+                    if (hoten == "" || phone == "" || email == "" || diachi == "") {
+                        alert("Vui lòng nhập đầy đủ thông tin");
+                    }
+                    else {
+                        var donhang = {
+                            "customer_name": hoten,
+                            "customer_address": diachi,
+                            "customer_email": email,
+                            "customer_phone_number": phone,
+                            "customer_note": ghichu,
+                            "created_date": new Date().toISOString().slice(0, 10),
+                            "status": "Đang xác nhận"
+                        }
+
+                        urlOrders = "http://localhost:3500/orders";
+                        options = {
+                            method: "POST",
+                            body: JSON.stringify(donhang),
+                            headers: { 'Content-Type': 'application/json' }
+                        }
+                        fetch(urlOrders, options).then(res => res.json())
+                            .then(data => {
+                                orderId = data.id;
+                                saveOrderDetail(orderId); // Lấy ID ra để lưu chi tiết đơn hàng
+                                console.log(data);
+                            })
+                    }
+                }
+            }
+            dathang();
+
+            function saveOrderDetail(orderId) {
+                let cart = JSON.parse(localStorage.getItem("cart"));
+                console.log(cart)
+                cart.forEach(sp => {
+                    let objSP = {
+                        "orderId": orderId,
+                        "productId": sp.id,
+                        "quantity": sp.quantity,
+                        "unit_price": sp.price * sp.quantity
+                    }
+                    urlDetail = "http://localhost:3500/order_details";
+                    options = {
+                        method: "POST",
+                        body: JSON.stringify(objSP),
+                        headers: { 'Content-Type': 'application/json' }
+                    }
+                    fetch(urlDetail, options).then(res => res.json())
+                        .then(detail => {
+                            console.log(detail);
+                            localStorage.removeItem("cart");
+                        })
+                })
+            }
+
+        </script>
+
+        </body>
+
+        </html>
